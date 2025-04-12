@@ -1,4 +1,5 @@
 #include "PhoneBook.hpp"
+#include <limits>
 
 PhoneBook::PhoneBook() : contactCount(0)
 {
@@ -17,16 +18,20 @@ void PhoneBook::addContact()
 	std::getline(std::cin, phone);
 	std::cout << "Enter Darkest Secret: ";
 	std::getline(std::cin, secret);
-	contacts[contactCount % 8].SetContact(first, last, nick, phone, secret);
-	contactCount++;
-	std::cout << "Contact added sucessfully!" << std::endl;
+	if (first.empty() || last.empty() || nick.empty() || phone.empty()
+		|| secret.empty())
+		std::cout << "Empty lines in contact!" << std::endl;
+	else
+	{
+		contacts[contactCount % 8].SetContact(first, last, nick, phone, secret);
+		contactCount++;
+		std::cout << "Contact added sucessfully!" << std::endl;
+	}
 }
-
-#include <limits> // Для std::numeric_limits
 
 void PhoneBook::searchContacts() const
 {
-	std::cout << "| Index | First Name | Last Name | Nickname |" << std::endl;
+	std::cout << "|  Index  | First Name | Last Name | Nickname |" << std::endl;
 	std::cout << "--------------------------------------------" << std::endl;
 
 	int displayedContacts = (contactCount < 8 ? contactCount : 8);
