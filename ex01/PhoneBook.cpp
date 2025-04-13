@@ -6,12 +6,27 @@
 /*   By: rkobelie <rkobelie@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/13 17:21:53 by rkobelie          #+#    #+#             */
-/*   Updated: 2025/04/13 17:21:53 by rkobelie         ###   ########.fr       */
+/*   Updated: 2025/04/13 18:13:13 by rkobelie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 #include <limits>
+
+bool	numberValidation(const std::string &phone)
+{
+	char	c;
+
+	for (size_t i = 0; i < phone.length(); i++)
+	{
+		c = phone[i];
+		if (!isdigit(c) && c != '+')
+		{
+			return (false);
+		}
+	}
+	return (true);
+}
 
 PhoneBook::PhoneBook() : contactCount(0)
 {
@@ -33,6 +48,8 @@ void PhoneBook::addContact()
 	if (first.empty() || last.empty() || nick.empty() || phone.empty()
 		|| secret.empty())
 		std::cout << "Empty lines in contact!" << std::endl;
+	else if(!numberValidation(phone))
+		std::cout << "Invalid phone number! Only digits and '+' are allowed." << std::endl;
 	else
 	{
 		contacts[contactCount % 8].SetContact(first, last, nick, phone, secret);
@@ -43,7 +60,7 @@ void PhoneBook::addContact()
 
 void PhoneBook::searchContacts() const
 {
-	std::cout << "|  Index  | First Name | Last Name | Nickname |" << std::endl;
+	std::cout << "|  Index  | First Name | Last Name |  Nickname  |" << std::endl;
 	std::cout << "--------------------------------------------" << std::endl;
 
 	int displayedContacts = (contactCount < 8 ? contactCount : 8);

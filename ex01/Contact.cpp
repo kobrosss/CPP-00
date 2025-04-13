@@ -6,7 +6,7 @@
 /*   By: rkobelie <rkobelie@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/13 17:21:39 by rkobelie          #+#    #+#             */
-/*   Updated: 2025/04/13 17:21:40 by rkobelie         ###   ########.fr       */
+/*   Updated: 2025/04/13 17:55:35 by rkobelie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,11 @@ void Contact::ShowContacts() const
 
 void Contact::ShowShort(int index) const
 {
-	std::cout << "|" << std::setw(10) << index << "| ";
+	std::cout << "|" << std::setw(9) << index << "|  ";
 	std::cout << std::setw(10) << (firstName.length() > 10 ? firstName.substr(0,
-			9) + "." : firstName) << "|";
+			9) + "." : firstName) << "| ";
 	std::cout << std::setw(10) << (lastName.length() > 10 ? lastName.substr(0,
-			9) + "." : lastName) << "|";
+			9) + "." : lastName) << "|  ";
 	std::cout << std::setw(10) << (nickname.length() > 10 ? nickname.substr(0,
 			9) + "." : nickname) << "|" << std::endl;
 }
