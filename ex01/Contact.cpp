@@ -1,15 +1,28 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Contact.cpp                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rkobelie <rkobelie@student.42warsaw.pl>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/13 17:21:39 by rkobelie          #+#    #+#             */
+/*   Updated: 2025/04/13 17:21:40 by rkobelie         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Contact.hpp"
 
-Contact::Contact() {
-    firstName = "";
-    lastName = "";
-    nickname = "";
-    phoneNumber = "";
-    darkestSecret = "";
+Contact::Contact()
+{
+	firstName = "";
+	lastName = "";
+	nickname = "";
+	phoneNumber = "";
+	darkestSecret = "";
 }
 
-void Contact::SetContact(std::string name, std::string surname, std::string nick,
-			std::string phone, std::string secret)
+void Contact::SetContact(std::string name, std::string surname,
+	std::string nick, std::string phone, std::string secret)
 {
 	firstName = name;
 	lastName = surname;
@@ -29,9 +42,11 @@ void Contact::ShowContacts() const
 
 void Contact::ShowShort(int index) const
 {
-	std::cout << "|" << std::setw(10)<< index << "| ";
-	std::cout << std::setw(10)<< (firstName.length() > 10 ? firstName.substr(0, 9) + "." : firstName) << "|";
-	std::cout << std::setw(10)<< (lastName.length() > 10 ? lastName.substr(0, 9) + "." : lastName) << "|";
-	std::cout << std::setw(10)<< (nickname.length() > 10 ? nickname.substr(0, 9) + "." : nickname) << "|" << std::endl;
+	std::cout << "|" << std::setw(10) << index << "| ";
+	std::cout << std::setw(10) << (firstName.length() > 10 ? firstName.substr(0,
+			9) + "." : firstName) << "|";
+	std::cout << std::setw(10) << (lastName.length() > 10 ? lastName.substr(0,
+			9) + "." : lastName) << "|";
+	std::cout << std::setw(10) << (nickname.length() > 10 ? nickname.substr(0,
+			9) + "." : nickname) << "|" << std::endl;
 }
-
